@@ -1,6 +1,6 @@
 name: CI Study
 
-  on:
+on:
     push:
       branches: [ main ]
 
