@@ -1,22 +1,12 @@
-name: CI Study
-
-on:
-  push:
-    branches: ['main']
-
+name: learn-github-actions
+on: [push]
 jobs:
-  test:
+  check-bats-version:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
-
-      - uses : actions/checkout@v3
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
           node-version: '18'
-          cache: 'npm'
-
-      - name: First Step
-        npm install
-        npm test
-        npm build
+      - run: npm install -g bats
+      - run: bats -v
