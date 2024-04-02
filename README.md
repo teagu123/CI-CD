@@ -61,15 +61,15 @@ name: CI Study
       runs-on: ubuntu-latest
 
       steps:
-      - uses: actions/checkout@v2
+      - name: Checkout source code
+        uses: actions/checkout@v2
 
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: my First Step
+        run:
+            npm install
+            npm build
 
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+
 ```
 
 ### on
@@ -87,12 +87,12 @@ on:
 ```
 jobs:
         build:
-          runs-on: ubuntu-latest
+          runs-on: ubuntu-latest //해당 job을 어떤 OS에서 실행할 것인지!
 
-          steps:
-          - uses: actions/checkout@v2
-          - name: Run a one-line script
-            run: echo Hello, world!
+          steps: //job이 가질수 있는 동작의 나열, 각각 step은 독립적은 프로세스를 가진다.
+          - uses: actions/checkout@v2 //해당 step에서 사용할 액션
+          - name: Run a one-line script //step의 이름
+            run: echo Hello, world! //
 
           - name: Run a multi-line script
             run: |
