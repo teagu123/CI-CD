@@ -44,3 +44,58 @@ Workflow, Event, Job, Step, Action, Runner 등이 있음
 ---
 
 ## Github Action 순서
+
+### 1. github repo -> actions -> set up this workflow로 생성 가능
+
+![image](https://github.com/teagu123/CI-CD/assets/103398790/0d6989f4-8a7a-4419-935d-4034ec1c433c)
+
+```
+name: CI Study
+
+  on:
+    push:
+      branches: [ main ]
+
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+
+      steps:
+      - uses: actions/checkout@v2
+
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+```
+
+### on
+
+- 어떤 조건에 workflow를 Trigger 시킬지
+
+```
+on:
+    push:
+        branchs: [main]
+```
+
+### job
+
+```
+jobs:
+        build:
+          runs-on: ubuntu-latest
+
+          steps:
+          - uses: actions/checkout@v2
+          - name: Run a one-line script
+            run: echo Hello, world!
+
+          - name: Run a multi-line script
+            run: |
+              echo Add other actions to build,
+              echo test, and deploy your project.
+```
