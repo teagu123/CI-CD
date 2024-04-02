@@ -1,18 +1,14 @@
 name: CI Study
 
 on:
-    push:
-      branches: [ "main" ]
+  push:
+    branches: ['main']
 
-  jobs:
-    build:
-      runs-on: ubuntu-latest
-
-      steps:
-      - name: Checkout source code
-        uses: actions/checkout@v2
-
-      - name: my First Step
-        run:
-            npm install
-            npm build
+jobs:
+  build:
+    runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v3
+    - run: npm ci
+    - run: npm test
+    - run: npm run build
